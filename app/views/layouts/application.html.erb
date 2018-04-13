@@ -11,6 +11,14 @@
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+      <script>
+        <% flash.each do |f| %>
+          <% type = f[0].to_s.gsub('alert','error').gsub('notice','info') %>
+          toastr['<%= type %>']('<%= f[1] %>')
+        <% end %>
+      </script>
+    <% unless flash.empty? %>
+    <% end %>
 
   </body>
 </html>
