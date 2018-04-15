@@ -7,20 +7,29 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show]
 
+
   resources :photos, only: [:create, :destroy] do
     collection do
       get :list
     end
   end
 
-  get 'manage-listhing/:id/basics' => 'listings#basics', as: 'manage_listhing_basics'
-  get 'manage-listhing/:id/description' => 'listings#description', as: 'manage_listing_description'
-  get 'manage-listhing/:id/address' => 'listings#address', as: 'manage_listing_address'
-  get 'manage-listhing/:id/price' => 'listings#price', as: 'manage_listing_price'
-  get 'manage-listhing/:id/photos' => 'listings#photos', as: 'manage_listing_photos'
-  get 'manage-listhing/:id/calendar' => 'listings#calendar', as: 'manage_listing_calendar'
-  get 'manage-listhing/:id/bankaccount' => 'listings#bankaccount', as: 'manage_listing_bankaccount'
-  get 'manage-listhing/:id/publish' => 'listings#publish', as: 'manage_listing_publish'
+  resources :listings do
+    resources :reservations, only: [:create]
+  end
+
+  get '/setdate' => 'reservations#setdate'
+
+  get '/duplicate' => 'reservations#duplicate'
+
+  get 'manage-listing/:id/basics' => 'listings#basics', as: 'manage_listing_basics'
+  get 'manage-listing/:id/description' => 'listings#description', as: 'manage_listing_description'
+  get 'manage-listing/:id/address' => 'listings#address', as: 'manage_listing_address'
+  get 'manage-listing/:id/price' => 'listings#price', as: 'manage_listing_price'
+  get 'manage-listing/:id/photos' => 'listings#photos', as: 'manage_listing_photos'
+  get 'manage-listing/:id/calendar' => 'listings#calendar', as: 'manage_listing_calendar'
+  get 'manage-listing/:id/bankaccount' => 'listings#bankaccount', as: 'manage_listing_bankaccount'
+  get 'manage-listing/:id/publish' => 'listings#publish', as: 'manage_listing_publish'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

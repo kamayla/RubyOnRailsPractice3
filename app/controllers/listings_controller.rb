@@ -1,8 +1,9 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_listhing, only: [:update,:basics,:address,:price,:photos,:calendar,:description,:bankaccount,:publish]
+  before_action :set_listhing, only: [:show,:update,:basics,:address,:price,:photos,:calendar,:description,:bankaccount,:publish]
 
   def index
+    @listings = current_user.listings
   end
 
   def new
@@ -10,6 +11,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @photos = @listing.photos
   end
 
   def create
@@ -17,9 +19,9 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.new(listing_params)
 
     if @listing.save
-      redirect_to manage_listhing_basics_path(@listing), notice: "リスティングを作成・保存をしました"
+      redirect_to manage_listing_basics_path(@listing), notice: "リスティングを作成・保存をしました"
     else
-      redirect_to new_listhing_path, notice: "リスティングを作成・保存をできませんでした"
+      redirect_to new_listing_path, notice: "リスティングを作成・保存をできませんでした"
     end
   end
 
@@ -64,7 +66,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-    params.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight)
+    params.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight, :address, :listing_title,:listing_content,:active)
   end
 
   def set_listhing

@@ -8,7 +8,7 @@
     <div class="navbar-collapse collapse sidebar-navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if controller?("listings") && action?("basics") %>">
-          <%= link_to "基本事項", manage_listhing_basics_path(@listing) %>
+          <%= link_to "基本事項", manage_listing_basics_path(@listing) %>
         </li>
         
         <li class="<%= 'active' if controller?("listings") && action?("description") %>">
