@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
 	    # user.skip_confirmation!
 	  end
 	end
+
+  def connected?
+    !stripe_user_id.nil?
+  end
 end

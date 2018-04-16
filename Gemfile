@@ -45,6 +45,10 @@ gem 'geocoder'
 
 gem 'jquery-ui-rails'
 
+gem 'stripe'
+
+gem 'rest-client'
+
 
 
 # Use ActiveModel has_secure_password

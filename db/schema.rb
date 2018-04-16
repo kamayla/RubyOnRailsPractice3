@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416052153) do
+ActiveRecord::Schema.define(version: 20180416073452) do
 
   create_table "listings", force: :cascade do |t|
     t.string   "home_type",       limit: 255
@@ -82,6 +82,11 @@ ActiveRecord::Schema.define(version: 20180416052153) do
     t.string   "image_content_type",     limit: 255
     t.integer  "image_file_size",        limit: 4
     t.datetime "image_updated_at"
+    t.string   "publishable_key",        limit: 255
+    t.string   "secret_key",             limit: 255
+    t.string   "stripe_user_id",         limit: 255
+    t.string   "currency",               limit: 255
+    t.string   "stripe_account_type",    limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
