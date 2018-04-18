@@ -49,6 +49,10 @@ gem 'stripe'
 
 gem 'rest-client'
 
+gem "private_pub"
+
+gem 'ransack'
+
 
 
 # Use ActiveModel has_secure_password

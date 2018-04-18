@@ -19,4 +19,5 @@
 //= require dropzone
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/i18n/datepicker-ja
+//= require private_pub
 
